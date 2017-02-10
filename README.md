@@ -1,7 +1,9 @@
-## Small client-side router backed by History API
+## Rooter
+
+Rooter is a small client-side routing with small API that is backed by browsers
+History API.
 
 ### Sample usage
-
 
 Here we will create new instance of router by calling `rooter` function and as
 argument we will pass id of root element on which all views are going to be rendered.
