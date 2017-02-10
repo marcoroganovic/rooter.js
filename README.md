@@ -67,14 +67,15 @@ route.notFound(function() {
 });
 ```
 
-Last step after adding desired routes is to call `start` function which will
+Last step after adding desired routes and setting up error handling is to call `start` function which will
 monitor `window.location` property.
 
 ```javascript
 router.start();
 ```
 
-To disable/remove certain route functionality you would do it like so.
+If you want to remove certain route you would call `remove` method and pass path
+to it..
 
 ```javascript
 router.remove("/secret");
