@@ -7,6 +7,8 @@ History API.
 
 Here we will create new instance of router by calling `rooter` function and as
 argument we will pass id of root element in which all views are going to be rendered.
+Also on view change will be applied transition which timing you can control by
+using `setTransitionTime` method (value should be in milliseconds).
 
 ```javascript
 var router = rooter("app");
@@ -56,12 +58,11 @@ method.
 router.namespace("user")
 ```
 
-To register route for non-existant page you can use `notFound` method. Default settings will
-redirect to `/404` route and handler is empty function. This is how you add custom
-handler.
+To handle `404` pages you can use `notFound` method by providing to it a custom
+function. Defaults to empty function.
 
 ```javascript
-route.notFound("/notfound", function() {
+route.notFound(function() {
   // for instance view.render("notfound");
 });
 ```
