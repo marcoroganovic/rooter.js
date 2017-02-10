@@ -56,8 +56,8 @@ method.
 router.namespace("user")
 ```
 
-To register route for non-existant page you can use `notFound`. Default settings will
-redirect to 404 page and handler is empty function. This is how you add custom
+To register route for non-existant page you can use `notFound` method. Default settings will
+redirect to `/404` route and handler is empty function. This is how you add custom
 handler.
 
 ```javascript
