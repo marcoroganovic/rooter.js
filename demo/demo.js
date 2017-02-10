@@ -57,7 +57,7 @@ router
       router.goTo("/");
     }
   })
-  .notFound("/notFound", function() {
+  .notFound(function() {
     view.render("notfound");
   })
 

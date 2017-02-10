@@ -82,10 +82,7 @@
     this.prefix = null;
     this.$root = document.getElementById(root);
     this.activeRoute = window.location.pathname;
-    this.notFoundHandler = {
-      path: "/404",
-      handler: noop
-    }
+    this.notFoundHandler = noop
   }
 
 
@@ -108,16 +105,26 @@
       this.$root.style.opacity = 0;
     },
 
+    transitionView: function(route) {
+      this.easeOut();
+        setTimeout(function() {
+          route.handler(route.params ?
+            extractParams(route) :
+            null
+          );
+          this.easeIn();
+        }.bind(this), 400);
+    },
+
 
     changeView: function(route) {
-      this.easeOut();
-      setTimeout(function() {
-        route.handler(route.params ?
-          extractParams(route) :
-          null
-        );
-        this.easeIn();
-      }.bind(this), 400);
+      // route is function on 404 page
+      if(isFunc(route)) {
+        route();
+        return;
+      }
+
+      this.transitionView(route);
     },
 
 
@@ -208,7 +215,6 @@
         if(match.middleware) this.executeMiddleware(match.middleware);
         this.changeView(match);
       } else {
-        this.pushNotFoundState()
         this.changeView(this.notFoundHandler);
       }
     },
@@ -244,18 +250,8 @@
     },
 
 
-    pushNotFoundState: function() {
-      var path = this.notFoundHandler.path;
-      this.activePath = path;
-      history.pushState(path, null, path);
-    },
-
-    
-    notFound: function(path, handler) {
-      this.notFoundHandler = {
-        path: path,
-        handler: handler
-      }
+    notFound: function(handler) {
+      this.notFoundHandler = handler;
       return this;
     },
 
@@ -283,10 +279,7 @@
       this.route = [];
       this.activeRoute = window.location.pathname,
       this.prefix = null;
-      this.notFoundHandler = {
-        path: "/404",
-        handler: noop
-      }
+      this.notFoundHandler = noop;
     }
 
   };
