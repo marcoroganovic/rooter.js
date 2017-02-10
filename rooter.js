@@ -82,6 +82,7 @@
     this.prefix = null;
     this.$root = document.getElementById(root);
     this.activeRoute = window.location.pathname;
+    this.transitionTime = 400;
     this.notFoundHandler = noop
   }
 
@@ -105,6 +106,17 @@
       this.$root.style.opacity = 0;
     },
 
+    
+    getTransitionTime: function() {
+      return this.transitionTime;
+    },
+
+    
+    setTransitionTime: function(amount) {
+      this.transitionTime = amount;
+    },
+
+
     transitionView: function(route) {
       this.easeOut();
         setTimeout(function() {
@@ -113,7 +125,7 @@
             null
           );
           this.easeIn();
-        }.bind(this), 400);
+        }.bind(this), this.transitonTime);
     },
 
 
