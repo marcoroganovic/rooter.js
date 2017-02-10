@@ -54,3 +54,11 @@ monitor `window.location` property.
 ```javascript
 router.start();
 ```
+
+To disable/remove certain route functionality you would do it like so.
+
+```javascript
+router.remove("/secret");
+```
+
+To empty whole object you can call `router.flush()`.
