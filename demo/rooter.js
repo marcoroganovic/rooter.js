@@ -1,5 +1,13 @@
 (function (lib, global) {
+
+  if(typeof module === "object" && typeof module.exports === "object") {
+    module.exports = lib();
+  } else if(typeof define === "function" && define.amd) {
+    return define([], lib);
+  } else {
     global.rooter = lib();
+  }
+
 })(function() {
   "use strict";
 
