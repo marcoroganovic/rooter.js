@@ -56,6 +56,9 @@ router
     } else {
       router.goTo("/");
     }
-  });
+  })
+  .notFound("/notFound", function() {
+    view.render("notfound");
+  })
 
 router.start();

@@ -4,18 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
-    <title> Rtr.js </title>
+    <title>rooter.js</title>
 
   </head>
   <body>
 
   <header>
     <nav>
-      <a href="/hello">Home</a>
+      <a href="/">Home</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
       <a href="/me/marko">First</a>
       <a href="/login">Login</a>
+      <a href="/error">Error Page</a>
     </nav>
   </header>
 
@@ -48,6 +49,10 @@
 
   <template id="tmpl-me">
     <h1>{{ name }}</h1>
+  </template>
+
+  <template id="tmpl-notfound">
+    <h1>Not found!</h1>
   </template>
 
   <script src="rooter.js"></script>

@@ -243,8 +243,10 @@
       this.findRoute(window.location.pathname);
     },
 
+
     pushNotFoundState: function() {
       var path = this.notFoundHandler.path;
+      this.activePath = path;
       history.pushState(path, null, path);
     },
 
