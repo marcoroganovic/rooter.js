@@ -1,6 +1,6 @@
 ## Rooter
 
-Rooter is a small, but potentially useful,  client-side routing with small API that is backed by browser's
+Rooter is a small, but potentially useful, client-side routing library with small API that is backed by browser's
 History API.
 
 ### Sample usage
