@@ -21,7 +21,6 @@ function authenticate() {
 }
 
 router
-  .namespace("hello")
   .when("/", function() {
     view.render("homepage");
   })
@@ -40,7 +39,7 @@ router
   })
 
   .when("/me", function() {
-    view.render("me", { name: "Marko Roganovic" });
+    view.render("me", { name: "John Doe" });
   })
 
   .when("/me/:name", function(params) {
@@ -51,7 +50,7 @@ router
     view.render("login");
   })
 
-  .when("/secret", function() {
+  .when("/secret", [authenticate], function() {
     if(loggedIn) {
       view.render("secret");
     } else {
