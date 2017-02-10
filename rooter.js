@@ -167,7 +167,7 @@
       
       switch(arguments.length) {
         case 3:
-          this.addRouteWithMiddleware(path, middleware, handler);
+          this.addRouteMiddleware(path, middleware, handler);
           break;
         case 2:
           handler = middleware;
@@ -188,7 +188,7 @@
 
     executeMiddleware: function(arr) {
       arr.forEach(function(mw) {
-        if(isFunction(mw)) mw();
+        if(isFunc(mw)) mw();
       });
     },
 
