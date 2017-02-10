@@ -200,7 +200,7 @@ var rooter = rooter || (function(global) {
       this.goTo(path);
     }
 
-    removeRoute(path) {
+    remove(path) {
       this.routes = this.routes.filter(route => {
         return (route.isRegex &&  path.match(route.path)) || 
                (route.path === path) ? false : true;
