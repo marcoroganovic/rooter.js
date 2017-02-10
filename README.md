@@ -46,3 +46,10 @@ router.when("/profile/:id/edit", [authenticate], function(params) {
   }
 });
 ```
+
+Last step after adding desired routes is to call `start` function which will
+monitor `window.location` property.
+
+```javascript
+router.start();
+```
