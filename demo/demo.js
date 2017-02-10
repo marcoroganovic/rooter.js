@@ -21,6 +21,7 @@ function authenticate() {
 }
 
 router
+  .namespace("hello")
   .when("/", function() {
     view.render("homepage");
   })

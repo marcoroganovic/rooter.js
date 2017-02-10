@@ -9,40 +9,48 @@
   }
 
 })(function() {
+
   "use strict";
 
   // Helpers
-  
   function noop() {}
 
+  
   function isString(arg) {
     return typeof arg === "string";
   }
 
+  
   function isObject(arg) {
     return typeof arg === "object";
   }
 
+  
   function isArray(arg) {
     return Object.prototype.toString.call(arg) === "[object Array]";
   }
 
+  
   function isFunc(arg) {
     return typeof arg === "function";
   }
 
+  
   function typeError(expected, actual) {
     throw new TypeError("Expected " + expected + ", got " + actual);
   }
+  
   
   function isRegexPath(path) {
     return /\/:[^\/]+/g.test(path);
   }
 
+  
   function decodeParam(param) {
     return decodeURIComponent(param);
   }
 
+  
   function extractParams(route) {
     var matched = window.location.pathname.match(route.path);
     var params = {};
@@ -55,6 +63,20 @@
     return params;
   }
 
+  
+  function prefixPath(path, prefix) {
+    if(prefix) {
+      if(prefix.indexOf("/") === -1) {
+        path = "/" + prefix + (path === "/" ? "" : path);
+      } else {
+        path = prefix + (path === "/" ? "" : path);
+      }
+    }
+    
+    return path;
+  }
+
+
   function Router(root) {
     this.routes = [];
     this.prefix = null;
@@ -66,20 +88,26 @@
     }
   }
 
+
   Router.prototype = {
+
+
     namespace: function(name) {
       this.prefix = name;
       return this;
     },
+
 
     easeIn: function() {
       this.$root.style.opacity = 1;
       this.$root.style.transition = "opacity .5s ease-in";
     },
 
+
     easeOut: function() {
       this.$root.style.opacity = 0;
     },
+
 
     changeView: function(route) {
       this.easeOut();
@@ -91,6 +119,7 @@
         this.easeIn();
       }.bind(this), 400);
     },
+
 
     addRegexRoute(path, cb, mw) {
       var placeholder = /\/:[^\/]+/g;
@@ -106,6 +135,7 @@
       });
     },
 
+
     addRouteMiddleware: function(path, mw, cb) {
       if(!isString(path)) typeError("string", typeof path);
       if(!isArray(mw)) typeError("array", typeof mw);
@@ -118,6 +148,7 @@
       }
     },
 
+
     addRoute: function(path, handler) {
       if(!isString(path)) typeError("string", typeof path);
       if(!isFunc(handler)) typeError("function", typeof handler);
@@ -129,7 +160,11 @@
       }
     },
 
+
     when: function(path, middleware, handler) {
+      // constructs path with prefix if set by namespace method
+      path = prefixPath(path, this.prefix);
+      
       switch(arguments.length) {
         case 3:
           this.addRouteWithMiddleware(path, middleware, handler);
@@ -157,12 +192,14 @@
       });
     },
 
+
     returnMatch: function(path) {
       return this.routes.find(function(route) {
         return (route.isRegex && path.match(route.path)) ||
                 route.path === path ? route : false;
       });
     },
+
 
     findRoute: function(path) {
       var match = this.returnMatch(path);
@@ -175,6 +212,7 @@
       }
     },
 
+    
     setupClickListener: function() {
       var self = this;
       document.addEventListener("click", function(e) {
@@ -189,6 +227,7 @@
       }, false);
     },
 
+    
     setupPopstateListener: function() {
       var self = this;
       window.addEventListener("popstate", function(e) {
@@ -196,12 +235,14 @@
       });
     },
 
+    
     start: function() {
       this.setupClickListener();
       this.setupPopstateListener();
       this.findRoute(window.location.pathname);
     },
 
+    
     notFound: function(path, handler) {
       this.notFoundHandler = {
         path: path,
@@ -209,15 +250,18 @@
       }
     },
 
+    
     goTo: function(path) {
       history.pushState(path, null, path);
       this.findRoute(path);
     },
 
+    
     redirect: function(path) {
       this.goTo(path);
     },
 
+    
     remove: function(path) {
       this.routes = this.routes.filter(function(route) {
         return (route.isRegex && path.match(route.path)) ||
@@ -225,6 +269,7 @@
       });
     },
 
+    
     flush: function() {
       this.route = [];
       this.activeRoute = window.location.pathname,
