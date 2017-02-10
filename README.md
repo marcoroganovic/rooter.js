@@ -6,7 +6,7 @@ History API.
 ### Sample usage
 
 Here we will create new instance of router by calling `rooter` function and as
-argument we will pass id of root element on which all views are going to be rendered.
+argument we will pass id of root element in which all views are going to be rendered.
 
 ```javascript
 var router = rooter("app");
@@ -21,7 +21,7 @@ router.when("/", function() {
 });
 ```
 
-Router also support url parameters all of which are decoded with browser
+Router also support URL parameters all of which are decoded with browser
 `decodeURIComponent` function before being passed to attached handler.
 
 ```javascript
