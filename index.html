@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <title> Rtr.js </title>
+
+  </head>
+  <body>
+
+  <header>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/me/marko">First</a>
+      <a href="/login">Login</a>
+    </nav>
+  </header>
+
+  <div id="app"></div>
+
+  <template id="tmpl-homepage">
+    <h1>Homepage</h1>
+  </template>
+
+  <template id="tmpl-about">
+    <h1>About</a>
+    <input type="text" placeholder="Enter name" />
+    <button>Find</button>
+  </template>
+
+  <template id="tmpl-contact">
+    <h1>Contact</h1>
+  </template>
+
+  <template id="tmpl-login">
+    <h1>Login Page</h1>
+    <a href="/secret">Go to secret!</a>
+  </template>
+
+  <template id="tmpl-secret">
+    <h1>Welcome to secret page!</h1>
+    <a href="/">Go to home!</a>
+    <a href="/me">Go to your page?</a>
+  </template>
+
+  <template id="tmpl-me">
+    <h1>{{ name }}</h1>
+  </template>
+
+  <script src="vrut.js"></script>
+  <script src="tmpl.js"></script>
+  <script src="demo.js"></script>
+  </body>
+</html>
