@@ -30,8 +30,9 @@ router.when("/user/:id", function(params) {
 });
 ```
 
-Middleware is another part of router. Middleware functions are passed in array
-as second arguments of `when` function. So:
+Middleware functions are another part of router. They are optional but if you
+want to add them you can do so by passing an array with desired functions as
+second argument.
 
 ```javascript
 function authenticate() {
