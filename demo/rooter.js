@@ -208,6 +208,7 @@
         if(match.middleware) this.executeMiddleware(match.middleware);
         this.changeView(match);
       } else {
+        this.pushNotFoundState()
         this.changeView(this.notFoundHandler);
       }
     },
@@ -240,6 +241,11 @@
       this.setupClickListener();
       this.setupPopstateListener();
       this.findRoute(window.location.pathname);
+    },
+
+    pushNotFoundState: function() {
+      var path = this.notFoundHandler.path;
+      history.pushState(path, null, path);
     },
 
     
