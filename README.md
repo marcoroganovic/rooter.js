@@ -48,6 +48,24 @@ router.when("/profile/:id/edit", [authenticate], function(params) {
 });
 ```
 
+If you want to namespace routes you can use appropriately named `namespace`
+method.
+
+
+```javascript
+router.namespace("user")
+```
+
+To register route for non-existant page you can use `notFound`. Default settings will
+redirect to 404 page and handler is empty function. This is how you add custom
+handler.
+
+``javascript
+route.notFound("/notfound", function() {
+  // for instance view.render("notfound");
+});
+```
+
 Last step after adding desired routes is to call `start` function which will
 monitor `window.location` property.
 

@@ -248,6 +248,7 @@
         path: path,
         handler: handler
       }
+      return this;
     },
 
     
