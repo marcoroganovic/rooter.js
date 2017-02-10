@@ -60,7 +60,7 @@ To register route for non-existant page you can use `notFound`. Default settings
 redirect to 404 page and handler is empty function. This is how you add custom
 handler.
 
-``javascript
+```javascript
 route.notFound("/notfound", function() {
   // for instance view.render("notfound");
 });
