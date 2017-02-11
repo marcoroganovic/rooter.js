@@ -297,7 +297,7 @@
   };
 
 
-  return function(id) {
+  return function(id) { 
     if(!(this instanceof Router)) {
       return new Router(id);
     }
