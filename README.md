@@ -5,17 +5,17 @@ History API.
 
 ### Sample usage
 
-Here we will create new instance of router by calling `rooter` function and as
-argument we will pass id of root element in which all views are going to be rendered.
-Also on view change will be applied transition which timing you can control by
-using `setTransitionTime` method (value should be in milliseconds).
+Here we will create new instance of router by calling `rooter` function which
+can accept optional argument that is `id` of root DOM element in which all views are
+goint to be rendered. If element is passed smooth transition will be applied on
+route change.
 
 ```javascript
 var router = rooter("app");
 ```
 
-After instantiation we can add routes by calling `when` function on provided
-object. It looks like this.
+After instantiation we can add routes by calling `when` method on provided
+object. It looks like this, also it support chaining.
 
 ```javascript
 router.when("/", function() {
