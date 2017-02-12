@@ -7,8 +7,11 @@ History API.
 
 Here we will create new instance of router by calling `rooter` function which
 can accept optional argument that is `id` of root DOM element in which all views are
-goint to be rendered. If element is passed smooth transition will be applied on
+going to be rendered. If element is passed smooth transition will be applied on
 route change.
+
+Default transition time is 400ms, to set new value you can use
+`setTransitionTime` method which accepts desired time in milliseconds.
 
 ```javascript
 var router = rooter("app");
