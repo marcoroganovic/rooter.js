@@ -308,6 +308,7 @@
     routes = [];
     activePath = window.location.pathname;
     prefix = null;
+    transitionTime = 400;
     notFoundHandler = noop;
   }
 
