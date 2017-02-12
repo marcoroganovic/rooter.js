@@ -18,7 +18,7 @@ var router = rooter("app");
 ```
 
 After instantiation we can add routes by calling `when` method on provided
-object. It looks like this, also it support chaining.
+object. It looks like this, also it supports chaining.
 
 ```javascript
 router.when("/", function() {
