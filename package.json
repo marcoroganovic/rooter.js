@@ -1,0 +1,19 @@
+{
+  "name": "rooter",
+  "version": "1.0.0",
+  "description": "History-based Client-Side Router",
+  "main": "rooter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcoroganovic/rooter.js.git"
+  },
+  "author": "Marco Roganovic <marcoroganovic@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcoroganovic/rooter.js/issues"
+  },
+  "homepage": "https://github.com/marcoroganovic/rooter.js#readme"
+}
