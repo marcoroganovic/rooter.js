@@ -335,7 +335,7 @@
     namespace: namespace,
     getRoutes: getRoutes,
     getTransitionConfig: getTransitionConfig,
-    setTransitionConfig: setTransitionConfig,
+    configureTransition: setTransitionConfig,
     goTo: goTo,
     redirect: redirect,
     remove: remove,
