@@ -87,7 +87,11 @@
   var prefix = null;
   var activePath = window.location.pathname;
   var $root = document.getElementById(id) || null;
-  var transitionTime = 400;
+  var transitionConfig = {
+    time: 400,
+    effect: "ease-in",
+    applyAfter: 200
+  };
   var notFoundHandler = noop;
   
   
@@ -98,33 +102,37 @@
    * Private methods
   ********************/
 
-  function easeIn() {
+  function show() {
     $root.style.opacity = 1;
-    $root.style.transition = "opacity .5s ease-in";
+    $root.style.transition = (
+        "opacity " + 
+        transitionConfig.time + "ms " +
+        transitionConfig.effect
+    );
   }
 
   
-  function easeOut() {
+  function hide() {
     $root.style.opacity = 0;
   }
 
   
-  function getTransitionTime() {
-    return transitionTime;
+  function getTransitionConfig() {
+    return transitionConfig;
   }
 
   
-  function setTransitionTime(amount) {
-    transitionTime = amount;
+  function setTransitionConfig(opts) {
+    transitionConfig = opts;
   }
 
   
   function transitionView(route) {
-    easeOut();
+    hide();
     setTimeout(function() {
       route.handler(route.params ? extractParams(route) : null);
-      easeIn();
-    }, transitionTime);
+      show();
+    }, transitionConfig.applyAfter);
   }
 
   
@@ -308,6 +316,7 @@
     routes = [];
     activePath = window.location.pathname;
     prefix = null;
+    transitionTime = 400;
     notFoundHandler = noop;
   }
 
@@ -325,8 +334,8 @@
     start: start,
     namespace: namespace,
     getRoutes: getRoutes,
-    getTransitionTime: getTransitionTime,
-    setTransitionTime: setTransitionTime,
+    getTransitionConfig: getTransitionConfig,
+    setTransitionConfig: setTransitionConfig,
     goTo: goTo,
     redirect: redirect,
     remove: remove,
