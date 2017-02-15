@@ -16,7 +16,7 @@ var router = rooter("app");
 
 To configure type and duration of transition you can use `configureTransition`
 method to which you pass plain JavaScript object with `effect`, `time` and
-`applyAfter` properties. Time should be in milliseconds. Sample usage:
+`applyAfter` properties. Time should be in milliseconds.
 
 ```
 router.configureTransition({
